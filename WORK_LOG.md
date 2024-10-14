@@ -1,9 +1,14 @@
 Name: YOUR NAME HERE
 
-| Date    |  Time  |                                     Update |
-|:--------|:------:|-------------------------------------------:|
-| April 5 | 9-10pm | I tried to write abstract, efficient code. |
-|         |        |                                            |
+| Date       |   Time    |                                                                                                                                                                                                                                                                               Update |
+|:-----------|:---------:|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| October 10 | 1130-1200 |                                                                                                                                Discussed possible solutions in class. As a class, landed on bitshifting. HOwever, I can't think of a way to convert the entire sequence into binary. |
+| October 13 | 0230-0300 | Made simple backbone code that iterates through the entire string and it has a nested loop for the length of the STR. If there is a search hit I increment the loop variable by the length of the STR. In addition, I use char at instead of substring because it is slightly faster |
+| October 14 | 0900-0930 |                      I scrapped all my old code because Landon finally explained bitwise operations in a way that made a lot of sense to me. My new approach start by creating a number that represents the STR then for every letter bitshift by two then compare the two letters.  |
+|            |           |                                                                                                                                                                                                                                                                                      |
+|            |           |                                                                                                                                                                                                                                                                                      |
+|            |           |                                                                                                                                                                                                                                                                                      |
+|            |           |                                                                                                                                                                                                                                                                                      |
 
 
 To add a new row to the table, click into a cell and then hit shift-enter.
