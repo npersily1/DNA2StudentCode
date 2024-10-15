@@ -40,6 +40,7 @@ public class DNA {
         if (temp == str) {
             count += 1;
             maxCount += 1;
+            temp = 0;
         }
         String s;
 
@@ -54,6 +55,8 @@ public class DNA {
             else {
                 count = 0;
             }
+            temp = temp << (32 -  2 * length + 2);
+            temp = temp >> (2*length + 2);
         }
 
 
