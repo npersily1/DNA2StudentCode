@@ -25,42 +25,51 @@ public class DNA {
 
         int str = 0;
 
+
         for (int i = 0; i < length; i++) {
-            str = str << 2;
-            str = str | map[STR.charAt(i)];
+            str = (str * 4 + map[STR.charAt(i)]);
         }
-        int temp = 0;
+
+
+        int seqHash = 0;
         for (int i = 0; i < length; i++) {
-            temp = temp << 2;
-            temp = temp | map[sequence.charAt(i)];
+            seqHash = (seqHash * 4 + map[sequence.charAt(i)]);
 
         }
+        // Compare first
         int maxCount = 0;
         int count = 0;
-        if (temp == str) {
+        if (seqHash == str) {
             count += 1;
             maxCount += 1;
-            temp = 0;
         }
-        String s;
 
         for (int i = length; i < sequence.length(); i++) {
-
-            temp = temp | map[sequence.charAt(i)];
-            if(temp == str) {
-                maxCount = Math.max(maxCount, ++count);
-                temp = 0;
-                i+=length;
+            seqHash = singleHash(seqHash, map[sequence.charAt(i-length)],map[sequence.charAt(i)],length);
+            String test = sequence.substring(i-length,i);
+            if(seqHash == str) {
+                count++;
+                if(count > maxCount) {
+                    maxCount = count;
+                }
             }
-            else {
+            else
+            {
                 count = 0;
             }
-            temp = temp << (32 -  2 * length + 2);
-            temp = temp >> (2*length + 2);
+
         }
 
 
         return maxCount;
+    }
+    public static int singleHash(int seqHash,int lastletter, int newLetter, int length)
+    {
+        seqHash -= (lastletter << ((length - 1) * 2));
+        seqHash = seqHash << 2;
+        seqHash += newLetter;
+
+        return seqHash;
     }
 
 
