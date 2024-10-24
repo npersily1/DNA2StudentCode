@@ -46,37 +46,25 @@ public class DNA {
 
         // For every letter in the sequence starting where the first possible STR is
         for (int i = length; i < sequence.length(); i++) {
-            String s = sequence.substring(i - length, i);
-            if(s.equals("AGAT")){
-                int bob =1;
-            }
-            System.out.println(s + "  " + seqHash);
+
 
             // Reigning champ to keep track of count
-            if (seqHash == str) {
-                count++;
+              if (seqHash == str) {
+                maxCount= Math.max(++count,maxCount);
 
-                if (count > maxCount) {
-                    maxCount = count;
-                }
                 seqHash = 0;
-                for (int j = 0; j < length; j++) {
-                     seqHash = (seqHash << 2) + map[sequence.charAt(j + length + i)];
+                i += length - 1;
+                for (int j = length; j > 0; j--) {
+                    char c = sequence.charAt(i-j+1);
+                     seqHash = (seqHash << 2) + map[sequence.charAt(i - j+1)];
                 }
-                i += length;
+
 
 
             } else {
                 count = 0;
                 seqHash = singleHash(seqHash, map[sequence.charAt(i)], transferConstant);
             }
-
-
-
-            // Get its hash value
-
-
-
         }
 
 
