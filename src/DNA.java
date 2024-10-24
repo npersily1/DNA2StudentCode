@@ -40,35 +40,42 @@ public class DNA {
             seqHash = (seqHash << 2) + map[sequence.charAt(i)];
 
         }
-        // Compare the first sequence to STR
+
         int maxCount = 0;
         int count = 0;
-        if (seqHash == str) {
-            count += 1;
-            maxCount += 1;
-        }
+
         // For every letter in the sequence starting where the first possible STR is
         for (int i = length; i < sequence.length(); i++) {
             String s = sequence.substring(i - length, i);
-            // Get its hash value
-            seqHash = singleHash(seqHash, map[sequence.charAt(i)], transferConstant);
+            if(s.equals("AGAT")){
+                int bob =1;
+            }
             System.out.println(s + "  " + seqHash);
+
             // Reigning champ to keep track of count
             if (seqHash == str) {
                 count++;
-                i += length - 1;
+
                 if (count > maxCount) {
                     maxCount = count;
                 }
                 seqHash = 0;
                 for (int j = 0; j < length; j++) {
-                    seqHash += (seqHash << 2) + map[sequence.charAt(j + i)];
+                     seqHash = (seqHash << 2) + map[sequence.charAt(j + length + i)];
                 }
+                i += length;
 
 
             } else {
                 count = 0;
+                seqHash = singleHash(seqHash, map[sequence.charAt(i)], transferConstant);
             }
+
+
+
+            // Get its hash value
+
+
 
         }
 
